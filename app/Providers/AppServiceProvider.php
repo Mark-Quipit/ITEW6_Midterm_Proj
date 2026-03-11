@@ -31,6 +31,14 @@ class AppServiceProvider extends ServiceProvider
         // Research Module
         $this->app->singleton(ResearchRepository::class);
         $this->app->singleton(ResearchService::class);
+
+        // Scheduling Module
+        $this->app->singleton(\Modules\Scheduling\SchedulingRepository::class);
+        $this->app->singleton(\Modules\Scheduling\SchedulingService::class);
+
+        // Instructional Module
+        $this->app->singleton(\Modules\Instructional\InstructionalRepository::class);
+        $this->app->singleton(\Modules\Instructional\InstructionalService::class);
     }
 
     public function boot(): void

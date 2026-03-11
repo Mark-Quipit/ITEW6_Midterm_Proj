@@ -39,14 +39,13 @@ Route::get('/events', [EventController::class, 'index'])->name('events.index');
 // Research Routes
 Route::get('/research', [ResearchController::class, 'index'])->name('research.index');
 
-// Scheduling Routes (placeholder)
-Route::get('/scheduling', function () {
-    return Inertia::render('scheduling/SchedulingIndex');
-})->name('scheduling.index');
+// Scheduling Routes
+Route::get('/scheduling', [Modules\Scheduling\SchedulingController::class, 'index'])->name('scheduling.index');
+Route::get('/scheduling/faculty/{id}', [Modules\Scheduling\SchedulingController::class, 'byFaculty'])->name('scheduling.faculty');
+Route::get('/scheduling/section/{section}', [Modules\Scheduling\SchedulingController::class, 'bySection'])->name('scheduling.section');
 
-// Instructional Routes (placeholder)
-Route::get('/instructional', function () {
-    return Inertia::render('instructional/InstructionalIndex');
-})->name('instructional.index');
+// Instructional Routes
+Route::get('/instructional', [Modules\Instructional\InstructionalController::class, 'index'])->name('instructional.index');
+Route::get('/instructional/subject/{id}', [Modules\Instructional\InstructionalController::class, 'bySubject'])->name('instructional.subject');
 
 require __DIR__.'/auth.php';
