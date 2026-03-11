@@ -1,0 +1,124 @@
+{
+  "_AppLayout-54535350.js": {
+    "file": "assets/AppLayout-54535350.js",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_Pagination-d240339c.js": {
+    "file": "assets/Pagination-d240339c.js",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-1e558d7d.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.tsx": {
+    "css": [
+      "assets/app-1e558d7d.css"
+    ],
+    "dynamicImports": [
+      "resources/js/pages/Dashboard.tsx",
+      "resources/js/pages/events/EventIndex.tsx",
+      "resources/js/pages/faculty/FacultyIndex.tsx",
+      "resources/js/pages/faculty/FacultyProfile.tsx",
+      "resources/js/pages/instructional/InstructionalIndex.tsx",
+      "resources/js/pages/research/ResearchIndex.tsx",
+      "resources/js/pages/scheduling/SchedulingIndex.tsx",
+      "resources/js/pages/students/StudentIndex.tsx",
+      "resources/js/pages/students/StudentProfile.tsx"
+    ],
+    "file": "assets/app-9fc1f2cf.js",
+    "isEntry": true,
+    "src": "resources/js/app.tsx"
+  },
+  "resources/js/pages/Dashboard.tsx": {
+    "file": "assets/Dashboard-056901d6.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/Dashboard.tsx"
+  },
+  "resources/js/pages/events/EventIndex.tsx": {
+    "file": "assets/EventIndex-e508c8f1.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js",
+      "_Pagination-d240339c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/events/EventIndex.tsx"
+  },
+  "resources/js/pages/faculty/FacultyIndex.tsx": {
+    "file": "assets/FacultyIndex-995429fc.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js",
+      "_Pagination-d240339c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/faculty/FacultyIndex.tsx"
+  },
+  "resources/js/pages/faculty/FacultyProfile.tsx": {
+    "file": "assets/FacultyProfile-e52ef4df.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/faculty/FacultyProfile.tsx"
+  },
+  "resources/js/pages/instructional/InstructionalIndex.tsx": {
+    "file": "assets/InstructionalIndex-89a129c8.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js",
+      "_Pagination-d240339c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/instructional/InstructionalIndex.tsx"
+  },
+  "resources/js/pages/research/ResearchIndex.tsx": {
+    "file": "assets/ResearchIndex-d318739e.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js",
+      "_Pagination-d240339c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/research/ResearchIndex.tsx"
+  },
+  "resources/js/pages/scheduling/SchedulingIndex.tsx": {
+    "file": "assets/SchedulingIndex-ff4687ba.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js",
+      "_Pagination-d240339c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/scheduling/SchedulingIndex.tsx"
+  },
+  "resources/js/pages/students/StudentIndex.tsx": {
+    "file": "assets/StudentIndex-d016ed87.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js",
+      "_Pagination-d240339c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/students/StudentIndex.tsx"
+  },
+  "resources/js/pages/students/StudentProfile.tsx": {
+    "file": "assets/StudentProfile-02b4b048.js",
+    "imports": [
+      "resources/js/app.tsx",
+      "_AppLayout-54535350.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/students/StudentProfile.tsx"
+  }
+}

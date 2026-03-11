@@ -3,7 +3,6 @@
 /vendor
 
 # Laravel
-/public/build
 /public/hot
 /public/storage
 /storage/*.key
@@ -31,7 +30,7 @@ yarn-error.log
 *.swo
 *~
 
-# Build artifacts
+# Build artifacts (keep public/build for deployment)
 /public/css
 /public/js
 /public/mix-manifest.json
