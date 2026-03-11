@@ -142,8 +142,8 @@ export interface PaginatedData<T> {
 
 // Common Props
 export interface PageProps {
-  auth: {
-    user: {
+  auth?: {
+    user?: {
       id: number;
       name: string;
       email: string;
@@ -154,4 +154,5 @@ export interface PageProps {
     success?: string;
     error?: string;
   };
+  [key: string]: any; // Index signature for Inertia compatibility
 }

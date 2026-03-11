@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import AppLayout from '@/layouts/AppLayout';
 import SearchBar from '@/components/ui/SearchBar';
@@ -31,10 +31,10 @@ interface Props extends PageProps {
 }
 
 export default function SchedulingIndex({ schedules, filters, faculty }: Props) {
-  const [search, setSearch] = React.useState(filters.search || '');
-  const [facultyId, setFacultyId] = React.useState(filters.faculty_id || '');
-  const [section, setSection] = React.useState(filters.section || '');
-  const [day, setDay] = React.useState(filters.day || '');
+  const [search, setSearch] = useState(filters.search || '');
+  const [facultyId, setFacultyId] = useState(filters.faculty_id || '');
+  const [section, setSection] = useState(filters.section || '');
+  const [day, setDay] = useState(filters.day || '');
 
   const handleSearch = (value: string) => {
     setSearch(value);

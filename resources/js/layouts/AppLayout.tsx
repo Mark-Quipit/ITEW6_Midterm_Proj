@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { PageProps } from '@/types/database';
 
@@ -62,15 +62,19 @@ export default function AppLayout({ children }: PropsWithChildren) {
               </div>
             </div>
             <div className="flex items-center">
-              <span className="text-sm text-gray-700 mr-4">{auth.user.name}</span>
-              <Link
-                href="/logout"
-                method="post"
-                as="button"
-                className="text-sm text-gray-500 hover:text-gray-700"
-              >
-                Logout
-              </Link>
+              {auth?.user && (
+                <>
+                  <span className="text-sm text-gray-700 mr-4">{auth.user.name}</span>
+                  <Link
+                    href="/logout"
+                    method="post"
+                    as="button"
+                    className="text-sm text-gray-500 hover:text-gray-700"
+                  >
+                    Logout
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

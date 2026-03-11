@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from '@inertiajs/react';
 import AppLayout from '@/layouts/AppLayout';
 import { Student, AcademicRecord, AcademicAward, Violation, PageProps } from '@/types/database';
@@ -10,7 +9,7 @@ interface Props extends PageProps {
   violations: Violation[];
 }
 
-export default function StudentProfile({ student, academicRecords, awards, violations }: Props) {
+export default function StudentProfile({ student, awards, violations }: Props) {
   return (
     <AppLayout>
       <div className="space-y-6">

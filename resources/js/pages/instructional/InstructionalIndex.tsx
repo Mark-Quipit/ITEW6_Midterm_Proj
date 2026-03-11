@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import AppLayout from '@/layouts/AppLayout';
 import SearchBar from '@/components/ui/SearchBar';
@@ -32,10 +32,10 @@ interface Props extends PageProps {
 }
 
 export default function InstructionalIndex({ materials, filters, subjects, faculty }: Props) {
-  const [search, setSearch] = React.useState(filters.search || '');
-  const [type, setType] = React.useState(filters.type || '');
-  const [subjectId, setSubjectId] = React.useState(filters.subject_id || '');
-  const [facultyId, setFacultyId] = React.useState(filters.faculty_id || '');
+  const [search, setSearch] = useState(filters.search || '');
+  const [type, setType] = useState(filters.type || '');
+  const [subjectId, setSubjectId] = useState(filters.subject_id || '');
+  const [facultyId, setFacultyId] = useState(filters.faculty_id || '');
 
   const handleSearch = (value: string) => {
     setSearch(value);

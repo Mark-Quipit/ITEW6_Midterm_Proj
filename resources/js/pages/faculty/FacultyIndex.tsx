@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import AppLayout from '@/layouts/AppLayout';
 import SearchBar from '@/components/ui/SearchBar';

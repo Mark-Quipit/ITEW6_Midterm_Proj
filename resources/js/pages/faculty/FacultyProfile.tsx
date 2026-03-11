@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from '@inertiajs/react';
 import AppLayout from '@/layouts/AppLayout';
 import { Faculty, FacultyTraining, PageProps } from '@/types/database';
