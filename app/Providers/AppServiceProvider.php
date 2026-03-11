@@ -16,6 +16,11 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        // Register custom Neon PostgreSQL connector
+        $this->app->bind('db.connector.pgsql', function () {
+            return new \App\Database\NeonPostgresConnector();
+        });
+
         // Student Module
         $this->app->singleton(StudentRepository::class);
         $this->app->singleton(StudentService::class);
