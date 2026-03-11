@@ -11,19 +11,8 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-// Temporarily remove auth middleware for testing
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard', [
-        'auth' => [
-            'user' => [
-                'id' => 1,
-                'name' => 'Test User',
-                'email' => 'test@example.com',
-                'role' => 'admin',
-            ],
-        ],
-    ]);
-})->name('dashboard');
+// Dashboard
+Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 // Student Routes
 Route::get('/students', [StudentController::class, 'index'])->name('students.index');
