@@ -17,13 +17,10 @@ auth.json
 .env
 .env.backup
 .env.production
-.env.local
-.env.*.local
 
 # Logs
 npm-debug.log
 yarn-error.log
-yarn-debug.log
 *.log
 
 # IDE
@@ -33,7 +30,6 @@ yarn-debug.log
 *.swp
 *.swo
 *~
-.DS_Store
 
 # Build artifacts
 /public/css
@@ -44,13 +40,9 @@ yarn-debug.log
 /coverage
 /.phpunit.cache
 
-# Temporary files
-*.tmp
-*.temp
-
 # OS files
-Thumbs.db
 .DS_Store
+Thumbs.db
 
 # Laravel Herd
 .herd

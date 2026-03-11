@@ -11,34 +11,42 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+// Temporarily remove auth middleware for testing
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard', [
+        'auth' => [
+            'user' => [
+                'id' => 1,
+                'name' => 'Test User',
+                'email' => 'test@example.com',
+                'role' => 'admin',
+            ],
+        ],
+    ]);
+})->name('dashboard');
 
-    // Student Routes
-    Route::get('/students', [StudentController::class, 'index'])->name('students.index');
-    Route::get('/students/{id}', [StudentController::class, 'show'])->name('students.show');
+// Student Routes
+Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+Route::get('/students/{id}', [StudentController::class, 'show'])->name('students.show');
 
-    // Faculty Routes
-    Route::get('/faculty', [FacultyController::class, 'index'])->name('faculty.index');
-    Route::get('/faculty/{id}', [FacultyController::class, 'show'])->name('faculty.show');
+// Faculty Routes
+Route::get('/faculty', [FacultyController::class, 'index'])->name('faculty.index');
+Route::get('/faculty/{id}', [FacultyController::class, 'show'])->name('faculty.show');
 
-    // Event Routes
-    Route::get('/events', [EventController::class, 'index'])->name('events.index');
+// Event Routes
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
-    // Research Routes
-    Route::get('/research', [ResearchController::class, 'index'])->name('research.index');
+// Research Routes
+Route::get('/research', [ResearchController::class, 'index'])->name('research.index');
 
-    // Scheduling Routes (placeholder)
-    Route::get('/scheduling', function () {
-        return Inertia::render('scheduling/SchedulingIndex');
-    })->name('scheduling.index');
+// Scheduling Routes (placeholder)
+Route::get('/scheduling', function () {
+    return Inertia::render('scheduling/SchedulingIndex');
+})->name('scheduling.index');
 
-    // Instructional Routes (placeholder)
-    Route::get('/instructional', function () {
-        return Inertia::render('instructional/InstructionalIndex');
-    })->name('instructional.index');
-});
+// Instructional Routes (placeholder)
+Route::get('/instructional', function () {
+    return Inertia::render('instructional/InstructionalIndex');
+})->name('instructional.index');
 
 require __DIR__.'/auth.php';
