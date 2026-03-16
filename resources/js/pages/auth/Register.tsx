@@ -26,190 +26,223 @@ export default function Register({ errors = {} }: RegisterProps) {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     router.post('/register', formData, {
       onFinish: () => setLoading(false),
     });
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left Side - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-orange-600 via-red-600 to-orange-700 p-12 flex-col justify-between relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
-        
-        <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-14 h-14 bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-              <span className="text-white font-bold text-xl">CCS</span>
+    <div className="min-h-screen flex bg-gray-50">
+      {/* 70% - Visual Section with Building Image */}
+      <div className="hidden lg:block lg:w-7/10 relative overflow-hidden" style={{ width: '70%' }}>
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+          style={{
+            backgroundImage: "url('/images/Pamantasan_ng_Cabuyao.jpg')",
+            backgroundPosition: 'center',
+          }}
+        >
+          {/* Refined Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-900/75 via-orange-800/40 to-transparent"></div>
+          
+          {/* Subtle Pattern Overlay */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}></div>
+          </div>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 h-full flex flex-col justify-between p-10 text-white">
+          {/* Top - Professional Logo */}
+          <div className="flex items-center gap-3">
+            <div className="w-14 h-14 bg-white/15 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20 shadow-2xl">
+              <span className="text-white font-bold text-xl tracking-tight">CCS</span>
             </div>
             <div>
-              <h1 className="text-white font-bold text-2xl">CCS Profiling System</h1>
-              <p className="text-orange-100 text-sm">Comprehensive Management Platform</p>
+              <h1 className="text-2xl font-bold tracking-tight">CCS Profiling System</h1>
+              <p className="text-orange-100 text-sm font-medium">Pamantasan ng Cabuyao</p>
             </div>
           </div>
-        </div>
 
-        <div className="relative z-10 space-y-8">
-          <div>
-            <h2 className="text-white text-4xl font-bold mb-4 leading-tight">
-              Join Our Growing<br />Academic Community
+          {/* Bottom - Elegant Tagline */}
+          <div className="max-w-xl space-y-4">
+            <h2 className="text-5xl font-bold leading-tight tracking-tight">
+              Join Our Community
             </h2>
-            <p className="text-orange-100 text-lg leading-relaxed">
-              Create your account and get access to powerful tools for managing students, 
-              faculty, events, research, and more.
+            <p className="text-lg text-white/95 leading-relaxed">
+              Create your account and unlock powerful academic management tools
             </p>
-          </div>
-
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
+            
+            {/* Feature Pills */}
+            <div className="flex flex-wrap gap-2 pt-4">
+              <div className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-medium">
+                Easy Setup
               </div>
-              <div>
-                <h3 className="text-white font-semibold mb-1">Comprehensive Management</h3>
-                <p className="text-orange-100 text-sm">All-in-one platform for academic administration</p>
+              <div className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-medium">
+                Instant Access
               </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-white font-semibold mb-1">Secure & Reliable</h3>
-                <p className="text-orange-100 text-sm">Enterprise-grade security for your data</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-10 h-10 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-white font-semibold mb-1">Fast & Efficient</h3>
-                <p className="text-orange-100 text-sm">Streamlined workflows save you time</p>
+              <div className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-medium">
+                Full Features
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="relative z-10 text-orange-100 text-sm">
-          © 2024 CCS Profiling System. All rights reserved.
         </div>
       </div>
 
-      {/* Right Side - Register Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-gray-50">
-        <div className="w-full max-w-md">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl mb-4 shadow-lg">
+      {/* 30% - Refined Registration Form Section */}
+      <div className="w-full lg:w-3/10 flex items-center justify-center bg-white p-8 lg:p-12 relative overflow-y-auto" style={{ width: '30%' }}>
+        {/* Mobile Logo */}
+        <div className="lg:hidden absolute top-8 left-8">
+          <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center shadow-lg">
+            <span className="text-white font-bold">CCS</span>
+          </div>
+        </div>
+
+        <div className="w-full max-w-md space-y-7 my-8">
+          {/* Professional Header */}
+          <div className="text-center space-y-3">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl shadow-xl mb-4 transform hover:scale-105 transition-transform">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                />
               </svg>
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
-            <p className="text-gray-600">Get started with your free account</p>
+            <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Create Account</h2>
+            <p className="text-gray-600 text-sm">Fill in your details to get started</p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <Input
-                label="Full Name"
-                type="text"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                error={errors.name}
-                placeholder="John Doe"
-                required
-                autoComplete="name"
-                autoFocus
-              />
+          {/* Refined Registration Form */}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              label="Full Name"
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              error={errors.name}
+              placeholder="John Doe"
+              required
+              autoComplete="name"
+              autoFocus
+            />
 
-              <Input
-                label="Email Address"
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                error={errors.email}
-                placeholder="you@example.com"
-                required
-                autoComplete="email"
-              />
+            <Input
+              label="Email Address"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              error={errors.email}
+              placeholder="you@example.com"
+              required
+              autoComplete="email"
+            />
 
-              <Input
-                label="Password"
-                type="password"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                error={errors.password}
-                placeholder="••••••••"
-                required
-                autoComplete="new-password"
-                helperText="Must be at least 8 characters"
-              />
+            <Input
+              label="Password"
+              type="password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              error={errors.password}
+              placeholder="••••••••"
+              required
+              autoComplete="new-password"
+              helperText="Min. 8 characters"
+            />
 
-              <Input
-                label="Confirm Password"
-                type="password"
-                value={formData.password_confirmation}
-                onChange={(e) => setFormData({ ...formData, password_confirmation: e.target.value })}
-                error={errors.password_confirmation}
-                placeholder="••••••••"
-                required
-                autoComplete="new-password"
-              />
+            <Input
+              label="Confirm Password"
+              type="password"
+              value={formData.password_confirmation}
+              onChange={(e) => setFormData({ ...formData, password_confirmation: e.target.value })}
+              error={errors.password_confirmation}
+              placeholder="••••••••"
+              required
+              autoComplete="new-password"
+            />
 
-              <div className="flex items-start">
-                <div className="flex items-center h-5">
-                  <input
-                    type="checkbox"
-                    checked={formData.terms}
-                    onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
-                    className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
-                    required
-                  />
-                </div>
-                <div className="ml-3">
-                  <label className="text-sm text-gray-600">
-                    I agree to the{' '}
-                    <a href="#" className="font-medium text-orange-600 hover:text-orange-700">
-                      Terms of Service
-                    </a>
-                    {' '}and{' '}
-                    <a href="#" className="font-medium text-orange-600 hover:text-orange-700">
-                      Privacy Policy
-                    </a>
-                  </label>
-                </div>
+            <div className="flex items-start pt-2">
+              <div className="flex items-center h-5">
+                <input
+                  type="checkbox"
+                  checked={formData.terms}
+                  onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
+                  className="h-4 w-4 text-orange-600 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 border-gray-300 rounded transition-all"
+                  required
+                />
               </div>
+              <div className="ml-3">
+                <label className="text-xs text-gray-700 leading-relaxed">
+                  I agree to the{' '}
+                  <a href="#" className="font-semibold text-orange-600 hover:text-orange-700 underline">
+                    Terms of Service
+                  </a>
+                  {' '}and{' '}
+                  <a href="#" className="font-semibold text-orange-600 hover:text-orange-700 underline">
+                    Privacy Policy
+                  </a>
+                </label>
+              </div>
+            </div>
 
-              <Button
-                type="submit"
-                variant="primary"
-                className="w-full py-3 text-base font-bold shadow-lg hover:shadow-xl"
-                loading={loading}
-              >
-                {loading ? 'Creating account...' : 'Create Account'}
-              </Button>
-            </form>
+            <Button
+              type="submit"
+              variant="primary"
+              className="w-full py-3.5 text-base font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+              loading={loading}
+            >
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Creating account...
+                </span>
+              ) : (
+                'Create Account'
+              )}
+            </Button>
+          </form>
 
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
-                Already have an account?{' '}
-                <Link
-                  href="/login"
-                  className="font-semibold text-orange-600 hover:text-orange-700 transition-colors"
-                >
-                  Sign in instead
-                </Link>
-              </p>
+          {/* Divider */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-4 bg-white text-gray-500 font-medium">Already have an account?</span>
             </div>
           </div>
+
+          {/* Login Link */}
+          <div className="text-center">
+            <p className="text-sm text-gray-600">
+              <Link
+                href="/login"
+                className="font-bold text-orange-600 hover:text-orange-700 transition-colors inline-flex items-center gap-1 group"
+              >
+                Sign in instead
+                <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </p>
+          </div>
+
+          {/* Footer Note */}
+          <p className="text-xs text-center text-gray-500 leading-relaxed pt-2">
+            By creating an account, you agree to our{' '}
+            <a href="#" className="text-orange-600 hover:text-orange-700 font-medium underline">Terms</a>
+            {' '}and{' '}
+            <a href="#" className="text-orange-600 hover:text-orange-700 font-medium underline">Privacy Policy</a>
+          </p>
         </div>
       </div>
     </div>
