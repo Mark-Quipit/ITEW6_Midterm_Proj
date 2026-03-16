@@ -106,33 +106,35 @@ export default function FilterPanel({
   searchPlaceholder = 'Search...',
 }: FilterPanelProps) {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-200/80 overflow-hidden backdrop-blur-sm">
       {/* Panel Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-        <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-8 h-8 bg-orange-100 rounded-lg">
-            <svg className="h-4 w-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50 border-b border-orange-100">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center w-9 h-9 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-sm">
+            <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
           </div>
-          <span className="text-sm font-semibold text-gray-800">Advanced Filters</span>
-          {activeCount > 0 && (
-            <span className="inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold text-white bg-orange-500 rounded-full">
-              {activeCount} active
-            </span>
-          )}
+          <div>
+            <span className="text-sm font-bold text-gray-800">Advanced Filters</span>
+            {activeCount > 0 && (
+              <span className="ml-2 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold text-white bg-gradient-to-r from-orange-500 to-red-600 rounded-full shadow-sm">
+                {activeCount}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Filter Controls */}
-      <div className="p-6 space-y-5">
+      <div className="p-6 space-y-6 bg-gradient-to-br from-white to-gray-50/30">
         {/* Search */}
         <div>
-          <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2.5">
             Search
           </label>
-          <div className="relative">
-            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="relative group">
+            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
@@ -141,20 +143,20 @@ export default function FilterPanel({
               onChange={e => onSearchChange(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && onApply()}
               placeholder={searchPlaceholder}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors placeholder-gray-400"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all placeholder-gray-400 shadow-sm hover:border-gray-400"
             />
           </div>
         </div>
 
         {/* Filter Grid */}
         <div>
-          <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
             Filter By
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {filters.map((filter) => (
               <div key={filter.name}>
-                <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                <label className="block text-xs font-semibold text-gray-600 mb-2">
                   {filter.label}
                 </label>
                 {filter.type === 'multiselect' ? (
@@ -163,7 +165,7 @@ export default function FilterPanel({
                   <select
                     value={filter.value}
                     onChange={(e) => filter.onChange(e.target.value)}
-                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors bg-white hover:border-gray-400 text-gray-900"
+                    className="w-full px-3.5 py-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all bg-white hover:border-gray-400 text-gray-900 shadow-sm font-medium"
                   >
                     <option value="">All {filter.label}</option>
                     {filter.options.map((option) => (
@@ -179,12 +181,12 @@ export default function FilterPanel({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center justify-between pt-1 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-2 border-t border-gray-200">
           <button
             type="button"
             onClick={onReset}
             disabled={activeCount === 0 && !search}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-gray-600 bg-white border-2 border-gray-300 rounded-xl hover:bg-gray-50 hover:border-gray-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -194,7 +196,7 @@ export default function FilterPanel({
           <button
             type="button"
             onClick={onApply}
-            className="inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white bg-orange-600 rounded-lg hover:bg-orange-700 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-orange-600 to-red-600 rounded-xl hover:from-orange-700 hover:to-red-700 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all shadow-lg hover:shadow-xl"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

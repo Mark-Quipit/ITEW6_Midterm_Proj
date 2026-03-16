@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 interface DateRangePickerProps {
   label: string;
   startDate: string;

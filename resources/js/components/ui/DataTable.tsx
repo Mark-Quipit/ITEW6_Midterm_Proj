@@ -26,18 +26,18 @@ export default function DataTable<T extends Record<string, any>>({
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gradient-to-r from-orange-50 to-amber-50">
-          <tr>
+        <thead>
+          <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
             {columns.map((column) => (
               <th
                 key={column.key}
-                className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                className="px-6 py-3.5 text-left text-xs font-bold text-gray-600 uppercase tracking-wider"
               >
                 {column.label}
               </th>
             ))}
             {hasActions && (
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3.5 text-right text-xs font-bold text-gray-600 uppercase tracking-wider">
                 Actions
               </th>
             )}
@@ -48,23 +48,23 @@ export default function DataTable<T extends Record<string, any>>({
             data.map((item, index) => (
               <tr
                 key={index}
-                className={`${
-                  onRowClick && !hasActions ? 'cursor-pointer hover:bg-orange-50 hover:shadow-sm' : ''
-                } transition-all duration-150 ease-in-out`}
+                className={`group ${
+                  onRowClick && !hasActions ? 'cursor-pointer' : ''
+                } hover:bg-gradient-to-r hover:from-orange-50/50 hover:to-amber-50/30 transition-all duration-200`}
                 onClick={() => !hasActions && onRowClick?.(item)}
               >
                 {columns.map((column) => (
-                  <td key={column.key} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <td key={column.key} className="px-6 py-4 text-sm text-gray-900">
                     {column.render ? column.render(item) : item[column.key]}
                   </td>
                 ))}
                 {hasActions && (
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <div className="flex items-center justify-end space-x-2">
+                  <td className="px-6 py-4 text-right text-sm font-medium">
+                    <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       {actions.onView && (
                         <button
                           onClick={() => actions.onView!(item)}
-                          className="text-orange-600 hover:text-orange-900 transition-colors p-1 rounded-md hover:bg-orange-50"
+                          className="p-2 text-orange-600 hover:text-orange-700 hover:bg-orange-100 rounded-lg transition-all duration-200"
                           title="View"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ export default function DataTable<T extends Record<string, any>>({
                       {actions.onEdit && (
                         <button
                           onClick={() => actions.onEdit!(item)}
-                          className="text-blue-600 hover:text-blue-900 transition-colors p-1 rounded-md hover:bg-blue-50"
+                          className="p-2 text-blue-600 hover:text-blue-700 hover:bg-blue-100 rounded-lg transition-all duration-200"
                           title="Edit"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +87,7 @@ export default function DataTable<T extends Record<string, any>>({
                       {actions.onDelete && (
                         <button
                           onClick={() => actions.onDelete!(item)}
-                          className="text-red-600 hover:text-red-900 transition-colors p-1 rounded-md hover:bg-red-50"
+                          className="p-2 text-red-600 hover:text-red-700 hover:bg-red-100 rounded-lg transition-all duration-200"
                           title="Delete"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,13 +102,15 @@ export default function DataTable<T extends Record<string, any>>({
             ))
           ) : (
             <tr>
-              <td colSpan={columns.length + (hasActions ? 1 : 0)} className="px-6 py-12 text-center text-sm text-gray-500">
+              <td colSpan={columns.length + (hasActions ? 1 : 0)} className="px-6 py-16 text-center">
                 <div className="flex flex-col items-center justify-center">
-                  <svg className="h-12 w-12 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                  </svg>
-                  <p className="font-medium">No data found</p>
-                  <p className="text-xs text-gray-400 mt-1">Try adjusting your filters or search criteria</p>
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                    <svg className="h-8 w-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                    </svg>
+                  </div>
+                  <p className="text-sm font-semibold text-gray-900 mb-1">No data found</p>
+                  <p className="text-xs text-gray-500">Try adjusting your filters or search criteria</p>
                 </div>
               </td>
             </tr>
