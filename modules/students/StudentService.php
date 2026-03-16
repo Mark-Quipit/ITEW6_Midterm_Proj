@@ -25,4 +25,24 @@ class StudentService
             'violations' => $this->repository->getViolations($id),
         ];
     }
+
+    public function getStudentById(int $id)
+    {
+        return $this->repository->findById($id);
+    }
+
+    public function createStudent(array $data)
+    {
+        return $this->repository->create($data);
+    }
+
+    public function updateStudent(int $id, array $data)
+    {
+        return $this->repository->update($id, $data);
+    }
+
+    public function deleteStudent(int $id)
+    {
+        return $this->repository->delete($id);
+    }
 }

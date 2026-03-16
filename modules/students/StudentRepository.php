@@ -22,11 +22,23 @@ class StudentRepository
         }
 
         if (!empty($filters['program'])) {
-            $query->where('program', $filters['program']);
+            $programs = is_array($filters['program']) ? $filters['program'] : explode(',', $filters['program']);
+            $query->whereIn('program', array_filter($programs));
         }
 
         if (!empty($filters['year_level'])) {
-            $query->where('year_level', $filters['year_level']);
+            $levels = is_array($filters['year_level']) ? $filters['year_level'] : explode(',', $filters['year_level']);
+            $query->whereIn('year_level', array_filter($levels));
+        }
+
+        if (!empty($filters['status'])) {
+            $statuses = is_array($filters['status']) ? $filters['status'] : explode(',', $filters['status']);
+            $query->whereIn('status', array_filter($statuses));
+        }
+
+        if (!empty($filters['gender'])) {
+            $genders = is_array($filters['gender']) ? $filters['gender'] : explode(',', $filters['gender']);
+            $query->whereIn('gender', array_filter($genders));
         }
 
         return $query->paginate($perPage);
@@ -35,6 +47,24 @@ class StudentRepository
     public function findById(int $id)
     {
         return Student::findOrFail($id);
+    }
+
+    public function create(array $data)
+    {
+        return Student::create($data);
+    }
+
+    public function update(int $id, array $data)
+    {
+        $student = Student::findOrFail($id);
+        $student->update($data);
+        return $student;
+    }
+
+    public function delete(int $id)
+    {
+        $student = Student::findOrFail($id);
+        return $student->delete();
     }
 
     public function getAcademicRecords(int $studentId)
