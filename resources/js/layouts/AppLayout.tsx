@@ -115,18 +115,22 @@ export default function AppLayout({ children }: PropsWithChildren) {
       {/* Sidebar */}
       <div className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Logo */}
-        <div className="flex items-center justify-between h-16 px-6 bg-gradient-to-r from-orange-600 to-red-600">
-          <Link href="/" className="flex items-center">
-            <div className="w-8 h-8 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
-              <span className="text-white font-bold text-sm">CCS</span>
+        <div className="relative flex items-center justify-between px-5 py-4 bg-gradient-to-r from-orange-600 to-red-600 border-b border-orange-700/40">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 ring-2 ring-white/30 group-hover:ring-white/60 transition-all duration-300 bg-white/10">
+              <img src="/images/ccs-logo.png" alt="CCS Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="text-white font-bold text-lg">Profiling System</span>
+            <div className="flex flex-col">
+              <span className="text-white font-black text-base tracking-widest uppercase leading-tight drop-shadow">CCS</span>
+              <span className="text-orange-100 font-semibold text-sm leading-tight">Profiling System</span>
+              <span className="text-orange-200/70 text-xs tracking-wide">PnC</span>
+            </div>
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="lg:hidden text-white hover:text-gray-200 transition-colors"
+            className="lg:hidden text-gray-400 hover:text-white transition-colors"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -139,18 +143,22 @@ export default function AppLayout({ children }: PropsWithChildren) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`group flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
+                className={`group relative flex items-center px-4 py-3 text-sm font-medium rounded-lg overflow-hidden transition-transform duration-200 hover:translate-x-1 ${
                   isActive(item.href)
                     ? 'bg-orange-50 text-orange-700 border-r-2 border-orange-600'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    : 'text-gray-600'
                 }`}
               >
-                <span className={`mr-3 ${isActive(item.href) ? 'text-orange-600' : 'text-gray-400 group-hover:text-gray-600'}`}>
+                {/* Sliding orange gradient background */}
+                {!isActive(item.href) && (
+                  <span className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-600 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out rounded-lg" />
+                )}
+                <span className={`relative mr-3 transition-colors duration-300 ${isActive(item.href) ? 'text-orange-600' : 'text-gray-400 group-hover:text-white'}`}>
                   {item.icon}
                 </span>
-                <div className="flex-1">
-                  <div className="font-medium">{item.label}</div>
-                  <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
+                <div className="relative flex-1">
+                  <div className={`font-medium transition-colors duration-300 ${isActive(item.href) ? '' : 'group-hover:text-white'}`}>{item.label}</div>
+                  <div className={`text-xs mt-0.5 transition-colors duration-300 ${isActive(item.href) ? 'text-gray-500' : 'text-gray-500 group-hover:text-orange-100'}`}>{item.description}</div>
                 </div>
               </Link>
             ))}
