@@ -1,0 +1,26 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('faculty_training', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('faculty_id')->constrained('faculty')->onDelete('cascade');
+            $table->string('training_name');
+            $table->string('provider')->nullable();
+            $table->date('date_completed')->nullable();
+            $table->string('certificate_url')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('faculty_training');
+    }
+};
