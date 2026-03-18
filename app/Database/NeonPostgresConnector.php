@@ -25,7 +25,8 @@ class NeonPostgresConnector extends PostgresConnector
     protected function extractEndpoint($host)
     {
         // Extract endpoint from host like: ep-solitary-recipe-a1mhlozz-pooler.ap-southeast-1.aws.neon.tech
-        if (preg_match('/^(ep-[^-]+-[^-]+-[^-]+)/', $host, $matches)) {
+        // or ep-solitary-recipe-a1mhlozz.ap-southeast-1.aws.neon.tech
+        if (preg_match('/^(ep-[a-z0-9-]+?)(?:-pooler)?\./', $host, $matches)) {
             return $matches[1];
         }
         return null;

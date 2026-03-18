@@ -154,4 +154,5 @@ export interface PageProps {
     success?: string;
     error?: string;
   };
+  [key: string]: any;
 }
